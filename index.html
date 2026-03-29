@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBSIDIAN · Raw Form Archive · Monochrome Index</title>
+  <!-- Tailwind + Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .title-grotesk {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    body {
+      background: #020202;
+      color: #e7e0d4;
+    }
+    .obsidian-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.8rem;
+    }
+    /* raw concrete cards */
+    .raw-card {
+      background: #0b0a09;
+      border-radius: 0px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+      border: 1px solid #2a241f;
+      transition: all 0.25s ease;
+    }
+    .raw-card:hover {
+      border-color: #a67c52;
+      transform: translateY(-3px);
+    }
+    /* header custom: fractured glass */
+    .section-marker {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      border-left: 5px solid #aa7c58;
+      padding-left: 1.2rem;
+      margin: 2.5rem 0 1.5rem 0;
+      font-family: 'Syne', sans-serif;
+      color: #e8dccc;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-transform: uppercase;
+    }
+    .section-marker:after {
+      content: "⛓️";
+      font-size: 1.2rem;
+      color: #aa7c58;
+      opacity: 0.7;
+    }
+    .badge-raw {
+      background: #141210;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.3rem 1rem;
+      border-radius: 0px;
+      color: #c8aa7a;
+      text-transform: uppercase;
+      border-bottom: 1px solid #aa7c58;
+    }
+    .icon-obsidian {
+      background: #141210;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #3f3328;
+    }
+    hr.divider-rough {
+      border: 0;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, #2a241f, #2a241f 6px, #0f0e0c 6px, #0f0e0c 12px);
+      margin: 2rem 0;
+    }
+    .hero-obsidian {
+      background: #000000;
+      background-image: linear-gradient(45deg, #14100c 1%, transparent 1%);
+      background-size: 40px 40px;
+      border-bottom: 2px solid #aa7c58;
+    }
+    .checklist-raw {
+      list-style: none;
+      padding-left: 0;
+    }
+    .checklist-raw li {
+      padding: 0.8rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 1px solid #211e1a;
+      font-weight: 400;
+      color: #d4cbbc;
+    }
+    .checklist-raw li::before {
+      content: "⬤";
+      color: #aa7c58;
+      font-size: 0.7rem;
+    }
+    .note-dark {
+      background: #0c0b09;
+      border-left: 3px solid #aa7c58;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      color: #b7a78a;
+    }
+    .obsidian-img {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      filter: grayscale(0.3) contrast(1.2) brightness(0.8);
+      border: 1px solid #2e2924;
+      transition: 0.2s;
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+      background: #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #aa7c58;
+    }
+    .price-obsidian {
+      font-family: monospace;
+      background: #181512;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.7rem;
+      border-radius: 0px;
+      color: #cfaa7c;
+    }
+    button {
+      transition: 0.2s;
+    }
+  </style>
+ 
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SBJZ7C7VV0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SBJZ7C7VV0');
+</script>
+
+</head>
+<body class="bg-[#020202]">
+
+<!-- MODAL: Obsidian Identity (different ritual) -->
+<div id="obsidianModal" class="fixed inset-0 z-50 flex items-center justify-center p-5 bg-black/95 backdrop-blur-sm" style="display: flex;">
+  <div class="bg-[#0e0c0a] border border-[#aa7c58]/40 max-w-md w-full p-8 md:p-10 relative shadow-2xl">
+    <button id="closeObsidianBtn" class="absolute top-4 right-5 text-stone-500 hover:text-amber-500 text-2xl">✕</button>
+    <div class="text-5xl mb-3">⛓️</div>
+    <h2 class="text-4xl font-black text-[#e0cfb0] title-grotesk tracking-tighter">OBSIDIAN</h2>
+    <p class="text-stone-400 my-4 leading-relaxed">Raw form archive · Brutalist textures, structural silence, and the art of deliberate imperfection. A sanctuary for those who seek garments carved from shadow and earth.</p>
+    <div class="flex flex-wrap gap-4 mt-7">
+      <button id="acceptObsidian" class="bg-[#aa7c58] hover:bg-[#8f6242] text-black font-bold px-7 py-3 text-sm tracking-wider">enter the void</button>
+      <button id="declineObsidian" class="bg-transparent border border-stone-700 text-stone-400 hover:border-amber-700 px-7 py-3 text-sm">later</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const modal = document.getElementById('obsidianModal');
+    const accept = document.getElementById('acceptObsidian');
+    const decline = document.getElementById('declineObsidian');
+    const closeBtn = document.getElementById('closeObsidianBtn');
+    if (modal) modal.style.display = 'flex';
+    function dismissModal() {
+      modal.style.transition = 'opacity 0.2s';
+      modal.style.opacity = '0';
+      setTimeout(() => { modal.style.display = 'none'; }, 200);
+    }
+    if(accept) accept.addEventListener('click', dismissModal);
+    if(decline) decline.addEventListener('click', dismissModal);
+    if(closeBtn) closeBtn.addEventListener('click', dismissModal);
+  })();
+</script>
+
+<!-- Hero: OBSIDIAN · Raw Form Archive (completely new header design) -->
+<div class="hero-obsidian py-20 md:py-28 relative overflow-hidden">
+  <div class="obsidian-container text-center relative z-10">
+    <div class="inline-flex items-center gap-3 bg-black/40 px-5 py-2 mb-6 backdrop-blur-sm border-t border-b border-amber-800/50">
+      <span class="w-2 h-2 bg-amber-600 rotate-45"></span>
+      <span class="text-[10px] tracking-[0.3em] text-amber-400 font-semibold">RAW FORM ARCHIVE</span>
+      <span class="w-2 h-2 bg-amber-600 rotate-45"></span>
+    </div>
+    <h1 class="text-7xl md:text-8xl font-black text-[#ebdfc9] title-grotesk tracking-tighter drop-shadow-2xl">OBSIDIAN</h1>
+    <div class="flex justify-center gap-2 my-3">
+      <span class="w-12 h-px bg-amber-700/70"></span>
+      <span class="w-24 h-px bg-amber-500/80"></span>
+      <span class="w-12 h-px bg-amber-700/70"></span>
+    </div>
+    <p class="text-stone-300 text-lg max-w-2xl mx-auto mt-3 font-light">structural tailoring · monolith fabrics · brutalist atelier</p>
+    <div class="flex flex-wrap justify-center gap-3 mt-10">
+      <span class="px-5 py-1.5 bg-black/70 text-amber-300 text-xs font-medium border border-amber-800/50">raw edge denim</span>
+      <span class="px-5 py-1.5 bg-black/70 text-amber-300 text-xs font-medium border border-amber-800/50">sculptural leather</span>
+      <span class="px-5 py-1.5 bg-black/70 text-amber-300 text-xs font-medium border border-amber-800/50">mineral dyes</span>
+      <span class="px-5 py-1.5 bg-black/70 text-amber-300 text-xs font-medium border border-amber-800/50">geometric knit</span>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-amber-700 to-transparent"></div>
+</div>
+
+<main class="obsidian-container pb-20">
+
+  <!-- Manifesto block: obsidian field guide -->
+  <div class="raw-card p-6 md:p-8 mt-12 bg-[#0e0c0a] border-r-2 border-r-[#aa7c58]">
+    <div class="flex gap-5 items-start flex-wrap">
+      <div class="text-4xl opacity-80">⛓️</div>
+      <div>
+        <p class="text-stone-200 leading-relaxed"><span class="font-bold title-grotesk text-amber-300 text-xl">OBSIDIAN</span> — a chronicle of form, texture, and anti-trend. We explore garments that feel like relics of the future: heavy canvas, oxidized hardware, and patterns drawn from brutalist architecture.</p>
+        <p class="text-stone-500 text-sm mt-2">— archive notes from underground textile labs & design radicals</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1 · RAW SELVEDGE DENIM ENGINEERED JACKETS -->
+  <section>
+    <div class="section-marker">raw selvedge · armor jackets</div>
+    <img class="obsidian-img" src="https://plus.unsplash.com/premium_photo-1698260795268-cc7e0d5c3174?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="raw denim jacket dark aesthetic">
+    <div class="flex justify-between mt-3 mb-4">
+      <div class="badge-raw"><span>⛓️</span> kaihara mill · japan</div>
+      <span class="price-obsidian">€320–€690</span>
+    </div>
+    <div class="raw-card p-6">
+      <h3 class="text-xl font-bold title-grotesk text-amber-200 mb-3">engineered indigo</h3>
+      <ul class="checklist-raw">
+        <li>16oz selvedge denim, rope-dyed for deep fade potential.</li>
+        <li>sculptural paneling, asymmetric pocket flaps.</li>
+        <li>hidden copper rivets & reinforced saddle stitching.</li>
+        <li>key makers: Orslow, RRL, independent Osaka ateliers.</li>
+      </ul>
+      <div class="note-dark">✦ wear ritual: cold soak, air dry — let the fades tell a story of wear.</div>
+    </div>
+  </section>
+
+  <hr class="divider-rough">
+
+  <!-- 2 · MONOLITH LEATHER BOMBERS (VEGAN + BIO) -->
+  <section>
+    <div class="section-marker">monolith leather · brutalist flight</div>
+    <img class="obsidian-img" src="https://images.unsplash.com/photo-1700168077358-692db90c8b7f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="leather bomber monochrome">
+    <div class="badge-raw mt-3 mb-4"><span>⛓️</span> bio-based tannery · veneto</div>
+    <div class="raw-card p-6">
+      <h3 class="text-xl font-bold title-grotesk text-amber-200 mb-3">obsidian shell</h3>
+      <ul class="checklist-raw">
+        <li>apple leather / Desserto cactus — matte finish, waxed texture.</li>
+        <li>chunky matt zippers, oversized collar, interior pocket with strap.</li>
+        <li>fully lined with organic hemp-cupro blend.</li>
+        <li>price range: €490–€980 (NGOAR, VOID, sustainable innovators).</li>
+      </ul>
+      <div class="note-dark">✦ cruelty-free and biodegradable — develops a unique patina over time.</div>
+    </div>
+  </section>
+
+  <hr class="divider-rough">
+
+  <!-- 3 · DECONSTRUCTED WOOL WORK VESTS -->
+  <section>
+    <div class="section-marker">deconstructed vests · utilitarian core</div>
+    <img class="obsidian-img" src="https://images.unsplash.com/photo-1716394546975-4340975bf4e9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="wool work vest dark">
+    <div class="badge-raw mt-3 mb-4"><span>⛓️</span> prato archive · italy</div>
+    <div class="raw-card p-6">
+      <h3 class="text-xl font-bold title-grotesk text-amber-200 mb-3">raw utility</h3>
+      <ul class="checklist-raw">
+        <li>recycled wool-blend felt, raw edges, oversized fit.</li>
+        <li>detachable D-ring belt, asymmetrical button closure.</li>
+        <li>internal tool pockets and contrast stitching.</li>
+        <li>€260–€550 (Our Legacy, Margaret Howell, independent).</li>
+      </ul>
+      <div class="note-dark">✦ style note: layer over a distressed tee or under an unstructured blazer.</div>
+    </div>
+  </section>
+
+  <hr class="divider-rough">
+
+  <!-- 4 · ASYMMETRIC HOODED TUNICS (MINERAL DYED) -->
+  <section>
+    <div class="section-marker">mineral dye tunics · primitive geometry</div>
+    <img class="obsidian-img" src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?q=80&w=1887&auto=format" alt="asymmetric hooded tunic">
+    <div class="badge-raw mt-3 mb-4"><span>⛓️</span> natural dye lab · kyoto</div>
+    <div class="raw-card p-6">
+      <h3 class="text-xl font-bold title-grotesk text-amber-200 mb-3">earth pigment</h3>
+      <ul class="checklist-raw">
+        <li>iron oxide & indigo, mud-dyed organic cotton/hemp.</li>
+        <li>oversized hood with integrated collar, raw hem draping.</li>
+        <li>one-size architectural cut, side slits.</li>
+        <li>price: €180–€390 (Studio Koya, Nilm, zero-waste).</li>
+      </ul>
+      <div class="note-dark">✦ each piece is unique — no two mineral-dyed garments are identical.</div>
+    </div>
+  </section>
+
+  <hr class="divider-rough">
+
+  <!-- 5 · EXPOSED SEAM CARGO TROUSERS -->
+  <section>
+    <div class="section-marker">exposed seam cargo · utilitarian volume</div>
+    <img class="obsidian-img" src="https://plus.unsplash.com/premium_photo-1698339571239-8c65d17adab7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="cargo trousers raw seams">
+    <div class="badge-raw mt-3 mb-4"><span>⛓️</span> paris workwear archive</div>
+    <div class="raw-card p-6">
+      <h3 class="text-xl font-bold title-grotesk text-amber-200 mb-3">brutalist pockets</h3>
+      <ul class="checklist-raw">
+        <li>heavy cotton ripstop / waxed canvas, visible seam construction.</li>
+        <li>six multi-depth pockets, reinforced knee darts.</li>
+        <li>adjustable waist with integrated webbing belt.</li>
+        <li>€240–€520 (Carhartt WIP, Enfin Levé, workwear ateliers).</li>
+      </ul>
+      <div class="note-dark">✦ fit tip: roll cuffs to reveal contrast herringbone tape.</div>
+    </div>
+  </section>
+
+  <hr class="divider-rough">
+
+  <!-- 6 · SCULPTURAL KNIT PONCHOS (HAND-LOOMED) -->
+  <section>
+    <div class="section-marker">hand-loomed ponchos · nomadic form</div>
+    <img class="obsidian-img" src="https://images.unsplash.com/photo-1756826666811-6bdcf5fef2fc?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="wool poncho dark">
+    <div class="badge-raw mt-3 mb-4"><span>⛓️</span> andean x avant-garde</div>
+    <div class="raw-card p-6">
+      <h3 class="text-xl font-bold title-grotesk text-amber-200 mb-3">raw alpaca blend</h3>
+      <ul class="checklist-raw">
+        <li>undyed alpaca/merino, open weave with structural hood.</li>
+        <li>exaggerated arm slits, raw fringe at hem.</li>
+        <li>hand-finished seams, wooden toggle closure.</li>
+        <li>€390–€760 (Arturo, MHL, ethical collectives).</li>
+      </ul>
+      <div class="note-dark">✦ wear as outer layer — pairs with straight-leg trousers and leather boots.</div>
+    </div>
+  </section>
+
+  <hr class="divider-rough">
+
+  <!-- 7 · GEOMETRIC CUT SHIRT JACKETS -->
+  <section>
+    <div class="section-marker">geometric shirt jacket · origami seams</div>
+    <img class="obsidian-img" src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1976&auto=format" alt="shirt jacket angular">
+    <div class="badge-raw mt-3 mb-4"><span>⛓️</span> copenhagen cutting edge</div>
+    <div class="raw-card p-6">
+      <h3 class="text-xl font-bold title-grotesk text-amber-200 mb-3">angular precision</h3>
+      <ul class="checklist-raw">
+        <li>organic cotton / linen canvas, engineered paneling.</li>
+        <li>stand collar, hidden placket, back pleat for movement.</li>
+        <li>natural corozo buttons, felled internal seams.</li>
+        <li>€220–€470 (NN.07, Samsoe, independent studios).</li>
+      </ul>
+      <div class="note-dark">✧ ideal for transitional climates — sharp but breathable.</div>
+    </div>
+  </section>
+
+  <hr class="divider-rough">
+
+  <!-- 8 · RAW HEMP UTILITY APRON (LAYERING PIECE) -->
+  <section>
+    <div class="section-marker">apron layer · utilitarian canvas</div>
+    <img class="obsidian-img" src="https://images.unsplash.com/photo-1633528888094-08d1f209aa5a?q=80&w=1168&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="hemp apron minimal">
+    <div class="badge-raw mt-3 mb-4"><span>⛓️</span> portugal fibre lab</div>
+    <div class="raw-card p-6">
+      <h3 class="text-xl font-bold title-grotesk text-amber-200 mb-3">toolbelt aesthetic</h3>
+      <ul class="checklist-raw">
+        <li>100% hemp, garment-dyed charcoal, adjustable cross-back straps.</li>
+        <li>three oversized patch pockets, hanging loops.</li>
+        <li>raw edge hem, natural patina with wash.</li>
+        <li>€140–€240 (Paa, Story mfg., Nomad workshop).</li>
+      </ul>
+      <div class="note-dark">✦ layer over knits or denim — redefines workwear elegance.</div>
+    </div>
+  </section>
+
+  <!-- OBSIDIAN COMPENDIUM: raw materials + atelier map -->
+  <div class="raw-card p-7 mt-12 bg-[#0a0908] border-b-2 border-b-[#aa7c58]">
+    <h3 class="text-2xl font-bold title-grotesk flex items-center gap-3 text-amber-300">⛓️ obsidian compendium · raw index</h3>
+    <div class="grid md:grid-cols-3 gap-5 text-sm mt-5 text-stone-400">
+      <div><span class="font-bold block text-amber-300 text-base">material rituals</span> look for hemp, organic linen, recycled wool — no virgin synthetics.</div>
+      <div><span class="font-bold block text-amber-300 text-base">brutalist ateliers</span> Antwerp, Berlin, Osaka — book visits via archive portal.</div>
+      <div><span class="font-bold block text-amber-300 text-base">repair culture</span> "Obsidian Mending" offers sashiko & visible darning.</div>
+      <div><span class="font-bold block text-amber-300 text-base">care codex</span> wash cold, hang dry, avoid bleach — preserve dark pigment.</div>
+      <div><span class="font-bold block text-amber-300 text-base">archive drops</span> bi-monthly releases, limited run of 50 pieces each.</div>
+      <div><span class="font-bold block text-amber-300 text-base">circular trade</span> exchange pre-loved OBSIDIAN-approved pieces for credit.</div>
+    </div>
+  </div>
+
+  <div class="flex justify-between flex-wrap text-xs text-stone-600 mt-12 pt-5 border-t border-stone-800">
+    <p>obsidian · raw form archive · brutalist index · independent design research</p>
+    <p>curated with material purists, structural tailors & circular innovators</p>
+  </div>
+</main>
+
+<!-- Footer OBSIDIAN signature (different from noir) -->
+<footer class="bg-[#040302] py-14 text-center text-[#cfc6b6] w-full mt-6 border-t border-[#2a241e]">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-center gap-3 mb-6">
+      <span class="w-8 h-px bg-amber-700/60"></span>
+      <span class="w-12 h-px bg-amber-500/70"></span>
+      <span class="w-8 h-px bg-amber-700/60"></span>
+    </div>
+    <p class="text-5xl font-black title-grotesk tracking-tighter text-amber-200/85">OBSIDIAN</p>
+    <p class="text-sm mt-3 tracking-wide text-stone-500">raw form · structural silence · timeless index</p>
+    <div class="flex justify-center gap-6 mt-6 text-xs text-stone-500 flex-wrap">
+      <span class="hover:text-amber-400 transition">selvedge denim</span>
+      <span class="hover:text-amber-400 transition">monolith leather</span>
+      <span class="hover:text-amber-400 transition">wool vests</span>
+      <span class="hover:text-amber-400 transition">mineral dyes</span>
+      <span class="hover:text-amber-400 transition">cargo trousers</span>
+      <span class="hover:text-amber-400 transition">hemp archive</span>
+    </div>
+    <div class="text-[10px] text-stone-700 mt-8">© OBSIDIAN — brutalist garment atlas · dark mode archive</div>
+  </div>
+</footer>
+
+<!-- Cloudflare email decoder preserved -->
+<script>
+  (function(){
+      function decodeEmail(encodedString) {
+          var email = "", 
+              r = parseInt(encodedString.substr(0, 2), 16), 
+              n, i;
+          for (n = 2; encodedString.length - n; n += 2){
+              i = parseInt(encodedString.substr(n, 2), 16) ^ r;
+              email += String.fromCharCode(i);
+          }
+          return email;
+      }
+      var elements = document.querySelectorAll('.__cf_email__');
+      for (var i = 0; i < elements.length; i++) {
+          var el = elements[i];
+          var encoded = el.getAttribute('data-cfemail');
+          if (encoded) {
+              var decodedEmail = decodeEmail(encoded);
+              el.innerHTML = decodedEmail;
+              if (el.parentNode.tagName === 'A') {
+                  el.parentNode.href = "mailto:" + decodedEmail;
+              }
+          }
+      }
+  })();
+</script>
+</body>
+</html>
